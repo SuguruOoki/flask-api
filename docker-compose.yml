@@ -6,7 +6,8 @@ services:
       context: ./
       dockerfile: build/Dockerfile
     ports:
-      - "50000:5001"
+      - "50000:5000"
     volumes:
       - ./app:/app
     # restart: always
+    command: ["python", "main.py"]
