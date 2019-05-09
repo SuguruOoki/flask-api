@@ -3,8 +3,8 @@ version: '3.3'
 services:
   web_api_flask:
     build:
-      context: ./
-      dockerfile: build/Dockerfile
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "50000:5000"
     volumes:
