@@ -1,7 +1,24 @@
 # Description (説明)
 
 This repository is a template for trying flask api with docker-compose.
-このリポジトリはdocker-composeでflaskのAPI実装を為のテンプレート。
+このリポジトリはdocker-composeでflaskのAPI実装を試すためのテンプレート。
+
+# Directory
+
+```
+flask-api/
+├── rest_api/
+│   ├── apis/
+│   │   └── __init__.py
+│   ├── models/
+│   │   └── __init__.py
+│   ├── __init__.py
+│   ├── app.py
+│   └── settings.py
+├── Dockerfile
+├── docker-compose.yml
+└── requirements.txt
+```
 
 # Preparation (準備)
 
