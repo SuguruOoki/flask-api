@@ -1,12 +1,27 @@
 version: '3.3'
-
 services:
-  web_api_flask:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  flask-api:
+    build: .
     ports:
       - "50000:5000"
-    volumes:
-      - ./app:/app
-    command: ["python", "main.py"]
+    environment:
+      MYSQL_URL: 'mysql+pymysql://test:user_pass@mysql/test'
+      PYTHONPATH: '/usr/src/app'
+    links:
+      - mysql
+    entrypoint:
+      - dockerize
+      - -timeout
+      - 60s
+      - -wait
+      - tcp://mysql:3306
+    command: python /usr/src/app/rest_api/app.py
+
+  mysql:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root_pass'
+      MYSQL_DATABASE: 'test'
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'user_pass'
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
